@@ -1,0 +1,26 @@
+type Book {
+	id: ID!, 
+	title: String!, 
+	author: Author!
+}
+
+type Author {
+	id: ID!, 
+	authorName: String!,
+	books: [Book]! 
+}
+
+# The Root Query for the application
+type Query {
+	books: [Book]!,
+	authors: [Author]!,
+	author(id: ID) : Author!, 
+	book(id: ID) : Book! 
+}
+
+# The Root mutation for the application
+type Mutation {
+	createBook(id: ID!, title: String!, authorId: ID!) : Book,
+	createAuthor(id: ID!, name: String!) : Author
+}
+
